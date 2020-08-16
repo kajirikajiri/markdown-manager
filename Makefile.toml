@@ -1,0 +1,40 @@
+[config]
+skip_core_tasks = true
+[tasks.ary]
+# https://stackoverflow.com/a/1441062/10677105
+script = [
+'''
+ary=$(git log --pretty=format:"%h-%cd" --date=format:'%Y/%m/%d-%H:%M:%S' markdown/test.md)
+for i in $ary; do
+  echo $i
+done
+'''
+]
+description = "hogehoge"
+[tasks.first]
+# https://stackoverflow.com/a/5189296/10677105
+script = [
+'''
+echo $SHELL
+first_commit(){
+  echo "git rev-list --max-parents=0 HEAD $1"
+}
+first_commit_date(){
+  echo $(git log --pretty=format:"%cd" --date=format:'%Y%m%d%H%M%S' $1)
+}
+files=$(find ./markdown -type f)
+for i in $files; do
+  fc=`first_commit $i`
+  echo $fc
+  fcd=`first_commit_date $fc`
+  echo $fcd
+  mv $i markdown/${first_commit_date}${i##*/}
+done
+'''
+]
+[tasks.ts]
+script = [
+'''
+./node_modules/.bin/ts-node $1
+'''
+]

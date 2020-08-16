@@ -1,0 +1,22 @@
+{
+  "name": "markdown-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/kajirikajiri/markdown-manager.git",
+  "author": "kazukinakamuraKN <kajirikajiri@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.27",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^26.4.0",
+    "ts-jest": "^26.2.0"
+  }
+}
