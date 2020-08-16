@@ -1,21 +1,21 @@
 import fs from 'fs'
 import {getMdList} from './getMdList'
-import {getStartsWithNotNumberList} from './getStartsWithNotNumberList'
-import {getObject} from './getObject'
-import {addNumber} from './addNumber'
+import {validFileNameList} from './validFileNameList'
+import {genObject} from './genObject'
+import {addDate} from './addDate'
 import {changeFileName} from './changeFileName'
 
 const dir:string = './markdown'
 
-const fileNameList = fs.readdirSync(dir);
+const fileNameList:string[] = fs.readdirSync(dir);
 
 const markdowns:string[] = getMdList(fileNameList)
 
-const startsWithNotNumberMarkdowns = getStartsWithNotNumberList(markdowns)
+const validatedFileNameList:string[] = validFileNameList(markdowns)
 
-const objStartsWithNotNumberMarkdowns = getObject(startsWithNotNumberMarkdowns)
+const objFileNameList:{before:string}[] = genObject(validatedFileNameList)
 
-const filePathList:{before:string, after:string}[] = addNumber(objStartsWithNotNumberMarkdowns, dir)
+const filePathList:{before:string, after:string}[] = addDate(objFileNameList, dir)
 
 changeFileName(filePathList)
 

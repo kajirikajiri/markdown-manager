@@ -1,6 +1,6 @@
 import {getLatestCommitDate} from './getFromGithub'
 
-export const addNumber =(fileNameList:{before:string}[], dirName:string):{before:string,after:string}[]=> {
+export const addDate =(fileNameList:{before:string}[], dirName:string):{before:string,after:string}[]=> {
   return fileNameList.map(({before})=>{
     const filePath:string = `${dirName}/${before}`
     const date:string = getLatestCommitDate(filePath)
