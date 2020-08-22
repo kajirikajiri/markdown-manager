@@ -1,7 +1,7 @@
-import * as getFromGithub from '../getLatestCommitDate'
+import * as getFromGithub from '../getOldestCommitDate'
 import {addDate} from '../addDate'
 
-jest.spyOn(getFromGithub, 'getLatestCommitDate').mockReturnValueOnce('dummy-date')
+jest.spyOn(getFromGithub, 'getOldestCommitDate').mockReturnValueOnce('dummy-date')
 
 test('return .md', () => {
   const fileNameList = [{before:'s.md'}]
