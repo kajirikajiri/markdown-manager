@@ -5,19 +5,21 @@ import {genObject} from './genObject'
 import {addDate} from './addDate'
 import {changeFileName} from './changeFileName'
 
-const dir:string = './markdown'
+export const addDateToFileNamePrefix = ()=>{
+  const dir:string = './markdown'
 
-const fileNameList:string[] = fs.readdirSync(dir);
+  const fileNameList:string[] = fs.readdirSync(dir);
 
-const markdowns:string[] = getMdList(fileNameList)
+  const markdowns:string[] = getMdList(fileNameList)
 
-const validatedFileNameList:string[] = validFileNameList(markdowns)
+  const validatedFileNameList:string[] = validFileNameList(markdowns)
 
-const objFileNameList:{before:string}[] = genObject(validatedFileNameList)
+  const objFileNameList:{before:string}[] = genObject(validatedFileNameList)
 
-const filePathList:{before:string, after:string}[] = addDate(objFileNameList, dir)
+  const filePathList:{before:string, after:string}[] = addDate(objFileNameList, dir)
 
-changeFileName(filePathList)
+  changeFileName(filePathList)
+}
 
 
 

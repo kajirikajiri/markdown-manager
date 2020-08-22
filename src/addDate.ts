@@ -1,4 +1,4 @@
-import {getLatestCommitDate} from './getFromGithub'
+import {getLatestCommitDate} from './getLatestCommitDate'
 
 export const addDate =(fileNameList:{before:string}[], dirName:string):{before:string,after:string}[]=> {
   return fileNameList.map(({before})=>{

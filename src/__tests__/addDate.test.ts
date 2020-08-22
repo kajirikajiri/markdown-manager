@@ -1,4 +1,4 @@
-import * as getFromGithub from '../getFromGithub'
+import * as getFromGithub from '../getLatestCommitDate'
 import {addDate} from '../addDate'
 
 jest.spyOn(getFromGithub, 'getLatestCommitDate').mockReturnValueOnce('dummy-date')
