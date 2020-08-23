@@ -13,7 +13,13 @@ export const getFileContents = (fileName:string):Promise<string>=>{
     const headerTitle = 'title: ' + fileName
     const headerDescription = 'description: description'
     const headerDate = 'date: ' + getLatestCommitDate('./markdown/'+fileName)
-    const history = '<!-- history area start -->' + '\n' + '<details><summary>commit history</summary><div><ol>' + '\n' + getCommitDateList('./markdown/'+fileName) + '\n'+ '</ol></div></details>' + '\n'+'<!-- history area end -->'+'\n'
+    const history = `
+      <!-- history area start -->\n
+      <details><summary>commit history</summary><div><ol>\n
+      ${getCommitDateList('./markdown/'+fileName)}\n
+      </ol></div></details>\n
+      <!-- history area end -->\n
+    `
     const toc = '<!-- toc area start -->' + '\n' + '<details><summary>headline</summary><div>' + '\n' + '<!-- START doctoc -->\n<!-- END doctoc -->\n\n' + '</div></details>' + '\n\n'+'<!-- toc area end -->'+'\n'
     const areas:{header: string[], toc:string,content:string[],history:string } = {header:['---', headerTitle, headerDescription, headerDate, '---'], toc, content:[],history}
     let lineCounter:number = 0
