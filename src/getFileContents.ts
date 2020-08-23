@@ -14,7 +14,7 @@ export const getFileContents = (fileName:string):Promise<string>=>{
     const headerDescription = 'description: description'
     const headerDate = 'date: ' + getLatestCommitDate('./markdown/'+fileName)
     const history = '<!-- history area start -->' + '\n' + '<details><summary>commit history</summary><div><ol>' + '\n' + getCommitDateList('./markdown/'+fileName) + '\n'+ '</ol></div></details>' + '\n'+'<!-- history area end -->'+'\n'
-    const toc = '<!-- START doctoc -->\n<!-- END doctoc -->\n'
+    const toc = '<!-- toc area start -->' + '\n' + '<details><summary>commit history</summary><div>' + '\n' + '<!-- START doctoc -->\n<!-- END doctoc -->\n' + '</div></details>' + '\n'+'<!-- toc area end -->'+'\n'
     const areas:{header: string[], toc:string,content:string[],history:string } = {header:['---', headerTitle, headerDescription, headerDate, '---'], toc, content:[],history}
     let lineCounter:number = 0
     let currentLineIsHistory:boolean = false // 0, 2はok, 1で終了したらおかしい
