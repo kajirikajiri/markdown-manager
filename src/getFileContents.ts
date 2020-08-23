@@ -1,6 +1,6 @@
 import fs from 'fs'
 import readline from 'readline'
-import {getLatestCommitDate} from './getLatestCommitDate'
+import {getCurrentTime} from './getCurrentTime'
 import {getCommitDateList} from './getCommitDateList'
 import {getIsHeader} from './getIsHeader'
 import {getIsHistory} from './getIsHistory'
@@ -12,7 +12,7 @@ export const getFileContents = (fileName:string):Promise<string>=>{
     const rl = readline.createInterface(rs);
     const headerTitle = 'title: ' + fileName
     const headerDescription = 'description: description'
-    const headerDate = 'date: ' + getLatestCommitDate('./markdown/'+fileName)
+    const headerDate = 'date: ' + getCurrentTime()
     const history = `<!-- history area start -->\n<details><summary>commit history</summary><div><ol>\n${getCommitDateList('./markdown/'+fileName)}\n</ol></div></details>\n<!-- history area end -->\n`
     const toc = '<!-- toc area start -->' + '\n' + '<details><summary>headline</summary><div>' + '\n' + '<!-- START doctoc -->\n<!-- END doctoc -->\n\n' + '</div></details>' + '\n\n'+'<!-- toc area end -->'+'\n'
     const areas:{header: string[], toc:string,content:string[],history:string } = {header:['---', headerTitle, headerDescription, headerDate, '---'], toc, content:[],history}
