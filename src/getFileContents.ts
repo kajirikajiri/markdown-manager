@@ -8,12 +8,12 @@ import {getIsToc} from './getIsToc'
 
 export const getFileContents = (fileName:string):Promise<string>=>{
   return new Promise((resolve, rejects)=>{
-    const rs = fs.createReadStream('./markdown/'+fileName)
+    const rs = fs.createReadStream(fileName)
     const rl = readline.createInterface(rs);
     const headerTitle = 'title: ' + fileName
     const headerDescription = 'description: description'
     const headerDate = 'date: ' + getCurrentTime()
-    const history = `<!-- history area start -->\n<details><summary>commit history</summary><div><ol>\n${getCommitDateList('./markdown/'+fileName)}\n</ol></div></details>\n<!-- history area end -->\n`
+    const history = `<!-- history area start -->\n<details><summary>commit history</summary><div><ol>\n${getCommitDateList(fileName)}\n</ol></div></details>\n<!-- history area end -->\n`
     const toc = '<!-- toc area start -->' + '\n' + '<details><summary>headline</summary><div>' + '\n' + '<!-- START doctoc -->\n<!-- END doctoc -->\n\n' + '</div></details>' + '\n\n'+'<!-- toc area end -->'+'\n'
     const areas:{header: string[], toc:string,content:string[],history:string } = {header:['---', headerTitle, headerDescription, headerDate, '---'], toc, content:[],history}
     let lineCounter:number = 0

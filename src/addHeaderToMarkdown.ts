@@ -1,15 +1,16 @@
 import fs from 'fs'
 import {getFileContents} from './getFileContents'
+import {getMarkdownsForDiff} from './getMarkdownsForDiff'
 
-export const addHeaderToMarkdown = async(dir:string,markdowns:string[])=>{
+export const addHeaderToMarkdown = async()=>{
+  const markdowns:string[] = getMarkdownsForDiff()
   try {
     await Promise.all(markdowns.map(async(fileName:string)=>{
       const string = await getFileContents(fileName)
-      fs.writeFileSync(`${dir}/${fileName}`, string)
+      fs.writeFileSync(`${fileName}`, string)
     }))
   }catch(e){
     console.log('catch-------')
     console.log(e)
   }
 }
-// addHeaderToMarkdown('./markdown', ['test.md', 'atest.md', 'testcopy.md'])
