@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest",
     "ts": "./node_modules/.bin/ts-node",
-    "commit": "git add . && git commit -m 'fix' && ./node_modules/.bin/ts-node ./src/runner.ts && ./doctoc.sh && git add . && git commit -m 'fix mds' && git push"
+    "commit": "git add . && git commit -m 'yarn commit' && ./node_modules/.bin/ts-node ./src/runner.ts && ./doctoc.sh && git add . && git commit -m 'auto commit (toc, headline)' && git push"
   },
   "dependencies": {
     "@types/node": "^14.0.27",
